@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PlayerProps } from '../types';
 
-function Player({ initialName, symbol }: PlayerProps) {
+function Player({ initialName, symbol, isActive }: PlayerProps) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -12,9 +12,10 @@ function Player({ initialName, symbol }: PlayerProps) {
   function handleNameChangeClick() {
     setIsEditing(editing => !editing);
   }
+  console.log(isActive);
 
   return (
-    <li>
+    <li className={isActive ? 'active' : undefined}>
       <span className="player">
         {isEditing ? (
           <input

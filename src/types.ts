@@ -6,11 +6,13 @@ export interface WinningCombinations {
   [index: number]: WinningCombination;
 }
 
-export interface initialGameBoardType {
-  [rowIndex: number]: Array<string | null>;
-}
-
 export interface PlayerProps {
   initialName: string;
   symbol: string;
+  isActive: boolean;
+}
+
+export interface GameBoardProps {
+  activePlayerSymbol: string;
+  onSelectSquare: () => void;
 }
