@@ -5,3 +5,8 @@ interface WinningCombination {
 export interface WinningCombinations {
   [index: number]: WinningCombination;
 }
+
+export interface PlayerProps {
+  name: string;
+  symbol: string;
+}
