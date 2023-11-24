@@ -1,25 +1,30 @@
 import { useState } from 'react';
 import { PlayerProps } from '../types';
 
-function Player({ name, symbol }: PlayerProps) {
-  const [enteredName, setEnteredName] = useState(name);
+function Player({ initialName, symbol }: PlayerProps) {
+  const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleNameChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setEnteredName(event.target.value);
+    setPlayerName(event.target.value);
   }
 
   function handleNameChangeClick() {
-    setIsEditing(prevState => !prevState);
+    setIsEditing(editing => !editing);
   }
 
   return (
     <li>
       <span className="player">
         {isEditing ? (
-          <input value={enteredName} onChange={handleNameChange} />
+          <input
+            type="text"
+            required
+            value={playerName}
+            onChange={handleNameChange}
+          />
         ) : (
-          <span className="player-name">{enteredName}</span>
+          <span className="player-name">{playerName}</span>
         )}
         <span className="player-symbol">{symbol}</span>
         <button onClick={handleNameChangeClick}>

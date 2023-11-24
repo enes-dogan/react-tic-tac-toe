@@ -7,6 +7,6 @@ export interface WinningCombinations {
 }
 
 export interface PlayerProps {
-  name: string;
+  initialName: string;
   symbol: string;
 }
