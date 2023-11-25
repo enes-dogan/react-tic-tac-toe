@@ -1,4 +1,11 @@
 import { WinningCombinations } from './types';
+import { GameBoardType } from './types';
+
+export const initialGameBoard: GameBoardType = [
+  ['', '', ''],
+  ['', '', ''],
+  ['', '', ''],
+];
 
 export const WINNING_COMBINATIONS: WinningCombinations[] = [
   [

@@ -1,3 +1,7 @@
+type squareType = '' | 'X' | 'O';
+export type rowType = [squareType, squareType, squareType];
+export type GameBoardType = [rowType, rowType, rowType];
+
 interface WinningCombination {
   row: number;
   column: number;
@@ -22,7 +26,7 @@ export interface PlayerProps {
 }
 
 export interface GameBoardProps {
-  turns: GameTurnTypes[];
+  gameBoard: GameBoardType;
   onSelectSquare: (row: number, col: number) => void;
 }
 
