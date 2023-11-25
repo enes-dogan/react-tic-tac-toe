@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import { GameBoardProps } from '../types';
-// import { initialGameBoardType } from '../types';
 
 const initialGameBoard = [
   ['', '', ''],
@@ -8,19 +6,14 @@ const initialGameBoard = [
   ['', '', ''],
 ];
 
-function GameBoard({ activePlayerSymbol, onSelectSquare }: GameBoardProps) {
-  const [gameBoard, setGameBoard] = useState(initialGameBoard);
+function GameBoard({ turns, onSelectSquare }: GameBoardProps) {
+  const gameBoard = initialGameBoard;
 
-  function handleSelectSquare(rowIndex: number, colIndex: number) {
-    console.log(activePlayerSymbol);
-    setGameBoard(prevGameBoard => {
-      const updatedBoard = [
-        ...prevGameBoard.map(innerArray => [...innerArray]),
-      ];
-      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
-      return updatedBoard;
-    });
-    onSelectSquare();
+  for (const turn of turns) {
+    const { player, square } = turn;
+    const { row, col } = square;
+
+    gameBoard[row][col] = player;
   }
 
   return (
@@ -30,7 +23,7 @@ function GameBoard({ activePlayerSymbol, onSelectSquare }: GameBoardProps) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                <button onClick={() => onSelectSquare(rowIndex, colIndex)}>
                   {playerSymbol}
                 </button>
               </li>
