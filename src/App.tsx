@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { GameTurnTypes } from './types';
+import { squareType } from './types';
 
 import Player from './components/Player';
 import GameBoard from './components/GameBoard';
@@ -26,7 +27,7 @@ function App() {
   for (const turn of gameTurns) {
     const { player, square } = turn;
     const { row, col } = square;
-    gameBoard[row][col] = player === 'X' ? 'X' : 'O';
+    gameBoard[row][col] = player as squareType;
   }
 
   function handleSelectSquare(rowIndex: number, colIndex: number) {

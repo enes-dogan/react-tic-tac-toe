@@ -1,4 +1,4 @@
-type squareType = '' | 'X' | 'O';
+export type squareType = '' | 'X' | 'O';
 export type rowType = [squareType, squareType, squareType];
 export type GameBoardType = [rowType, rowType, rowType];
 
