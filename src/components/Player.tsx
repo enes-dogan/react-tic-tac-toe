@@ -12,7 +12,6 @@ function Player({ initialName, symbol, isActive }: PlayerProps) {
   function handleNameChangeClick() {
     setIsEditing(editing => !editing);
   }
-  console.log(isActive);
 
   return (
     <li className={isActive ? 'active' : undefined}>

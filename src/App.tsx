@@ -34,18 +34,18 @@ function App() {
         <ol id="players" className="highlight-player">
           <Player
             initialName="Player 2"
-            symbol="O"
+            symbol="X"
             isActive={activePlayer === 'X'}
           />
           <Player
             initialName="Player 1"
-            symbol="X"
+            symbol="O"
             isActive={activePlayer === 'O'}
           />
         </ol>
         <GameBoard turns={gameTurns} onSelectSquare={handleSelectSquare} />
       </div>
-      <Log />
+      <Log gameTurns={gameTurns} />
     </main>
   );
 }

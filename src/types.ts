@@ -25,3 +25,7 @@ export interface GameBoardProps {
   turns: GameTurnTypes[];
   onSelectSquare: (row: number, col: number) => void;
 }
+
+export interface LogProps {
+  gameTurns: GameTurnTypes[];
+}
