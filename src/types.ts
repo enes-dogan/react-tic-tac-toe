@@ -27,5 +27,5 @@ export interface GameBoardProps {
 }
 
 export interface LogProps {
-  gameTurns: GameTurnTypes[];
+  turns: GameTurnTypes[];
 }

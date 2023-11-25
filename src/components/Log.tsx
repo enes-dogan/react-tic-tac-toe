@@ -1,13 +1,12 @@
 import { LogProps } from '../types';
 
-function Log({ gameTurns }: LogProps) {
+function Log({ turns }: LogProps) {
   return (
     <ol id="log">
-      {gameTurns.map((turn, index) => (
-        <li key={index}>
-          {`Player: ${turn.player} Row: ${turn.square.row + 1} Col:${
-            turn.square.col + 1
-          }`}
+      {turns.map(turn => (
+        <li key={`${turn.square.row}${turn.square.col}`}>
+          Player {turn.player} selected. Row: {turn.square.row + 1} Col:
+          {turn.square.col + 1}
         </li>
       ))}
     </ol>
