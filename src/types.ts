@@ -33,3 +33,8 @@ export interface GameBoardProps {
 export interface LogProps {
   turns: GameTurnTypes[];
 }
+
+export interface GameOverProps {
+  winner: string;
+  onRematch: () => void;
+}
