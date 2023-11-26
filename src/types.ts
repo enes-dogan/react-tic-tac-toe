@@ -19,10 +19,16 @@ export interface GameTurnTypes {
   };
 }
 
+export interface playersType {
+  X: string;
+  O: string;
+}
+
 export interface PlayerProps {
   initialName: string;
-  symbol: string;
+  symbol: 'X' | 'O';
   isActive: boolean;
+  onStopEditing: (symbol: 'X' | 'O', playerName: string) => void;
 }
 
 export interface GameBoardProps {
@@ -35,6 +41,6 @@ export interface LogProps {
 }
 
 export interface GameOverProps {
-  winner: string;
+  winner: string | undefined;
   onRematch: () => void;
 }

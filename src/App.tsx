@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { GameTurnTypes } from './types';
 import { GameBoardType } from './types';
 import { squareType } from './types';
+import { playersType } from './types';
 
 import Player from './components/Player';
 import GameBoard from './components/GameBoard';
@@ -20,7 +21,19 @@ function deriveActivePlayer(gameTurns: GameTurnTypes[]) {
 }
 
 function App() {
+  const [players, setPlayers] = useState<playersType>({
+    X: 'Player 1',
+    O: 'Player 2',
+  });
   const [gameTurns, setGameTurns] = useState<GameTurnTypes[]>([]);
+
+  function handlePlayerNameEdit(symbol: 'X' | 'O', playerName: string) {
+    setPlayers(prevPlayers => {
+      const updatedPlayers = { ...prevPlayers };
+      updatedPlayers[symbol] = playerName;
+      return updatedPlayers;
+    });
+  }
 
   const activePlayer = deriveActivePlayer(gameTurns);
 
@@ -34,7 +47,7 @@ function App() {
     gameBoard[row][col] = player as squareType;
   }
 
-  let winner: squareType = '';
+  let winner = '';
 
   for (const combination of WINNING_COMBINATIONS) {
     const firstSquareSymbol =
@@ -79,18 +92,23 @@ function App() {
       <div id="game-container">
         <ol id="players" className="highlight-player">
           <Player
-            initialName="Player 2"
+            initialName="Player 1"
             symbol="X"
             isActive={activePlayer === 'X'}
+            onStopEditing={handlePlayerNameEdit}
           />
           <Player
-            initialName="Player 1"
+            initialName="Player 2"
             symbol="O"
             isActive={activePlayer === 'O'}
+            onStopEditing={handlePlayerNameEdit}
           />
         </ol>
         {(winner || hasDraw) && (
-          <GameOver winner={winner} onRematch={handleResetGame} />
+          <GameOver
+            winner={players[winner as keyof playersType]}
+            onRematch={handleResetGame}
+          />
         )}
         <GameBoard gameBoard={gameBoard} onSelectSquare={handleSelectSquare} />
       </div>

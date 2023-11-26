@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { PlayerProps } from '../types';
 
-function Player({ initialName, symbol, isActive }: PlayerProps) {
+function Player({ initialName, symbol, isActive, onStopEditing }: PlayerProps) {
   const [playerName, setPlayerName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -11,6 +11,7 @@ function Player({ initialName, symbol, isActive }: PlayerProps) {
 
   function handleNameChangeClick() {
     setIsEditing(editing => !editing);
+    onStopEditing(symbol, playerName);
   }
 
   return (
