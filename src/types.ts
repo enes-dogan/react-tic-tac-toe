@@ -3,8 +3,8 @@ export type rowType = [squareType, squareType, squareType];
 export type GameBoardType = [rowType, rowType, rowType];
 
 interface WinningCombination {
-  row: number;
-  column: number;
+  row: 0 | 1 | 2;
+  column: 0 | 1 | 2;
 }
 
 export interface WinningCombinations {
@@ -38,6 +38,7 @@ export interface GameBoardProps {
 
 export interface LogProps {
   turns: GameTurnTypes[];
+  players: playersType;
 }
 
 export interface GameOverProps {

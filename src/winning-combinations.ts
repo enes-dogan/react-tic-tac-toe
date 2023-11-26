@@ -1,7 +1,7 @@
 import { WinningCombinations } from './types';
 import { GameBoardType } from './types';
 
-export const initialGameBoard: GameBoardType = [
+export const INITIAL_GAME_BOARD: GameBoardType = [
   ['', '', ''],
   ['', '', ''],
   ['', '', ''],
